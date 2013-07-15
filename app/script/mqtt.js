@@ -13,9 +13,9 @@ var interval = 20000;
 var domain = 'blog.163.com';
 var productKey = "94b4b71691a3ee3da605ed4f02696691";
 var platform = "android";
-var expire_time = "12";
-var nonce = "abc12f";
-var signature = "NnNMjd6/cfSe/zmEAz9ABhlKqP4=";
+var expire_time = "1373965044790";
+var nonce = "faLvUuMzPgQAUFwK";
+var signature = "8wmHp9eYhMACfIf3J0PJdgVEcFU=";
 
 var timestamp = 0;
 var retry = 0;
