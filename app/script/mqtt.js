@@ -108,7 +108,8 @@ var connect = function (port,host) {
       } else {
         act.reconnect();
       }
-      setInterval(function() {client.pingreq();},30*60*1000);
+      // setInterval(function() {client.pingreq();},30*60*1000);
+      setInterval(function() {client.pingreq();},10*1000);
     });
   });
 };
