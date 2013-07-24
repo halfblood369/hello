@@ -290,9 +290,10 @@ var http = require('http');
                 productKey: productKey
               }, function(data) {
                 console.timeEnd('register');
-								console.error('data.code = ', data.code);
+                console.log('data.code = ', data.code);
                 if (data.code === success) {
                 monitor('end','register',2);
+                monitor('incr', 'registerack_0');
                 isRegister = true;
                 bind2('nA8vcgDWYgYiHkKG','1366883049608','xzm0sznKKF1t5EO8bUyc7Oo4Sr0=');
                 // var req = http.get(login_url,function(res){
