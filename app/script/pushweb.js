@@ -36,7 +36,8 @@ var http = require('http');
       url += ':' + port;
     }
     // try to connect
-    socket = io.connect(url,{transports: ['xhr-polling'],'force new connection':true, reconnect:true, 'try multiple transports':false});
+    // socket = io.connect(url,{transports: ['xhr-polling'],'force new connection':true, reconnect:true, 'try multiple transports':false});
+    socket = io.connect(url,{'force new connection':true, reconnect:true, 'try multiple transports':false});
     // connect on server side successfully
     socket.on('connect', function() {
       console.log('[pomeloclient.init] websocket connected!');
@@ -285,6 +286,7 @@ var http = require('http');
                 productKey: productKey
               }, function(data) {
                 console.timeEnd('register');
+								console.error('data.code = ', data.code);
                 if (data.code === success) {
                 monitor('end','register',2);
                 isRegister = true;
