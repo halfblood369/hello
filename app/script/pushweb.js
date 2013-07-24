@@ -252,11 +252,12 @@ var http = require('http');
     }
   }
 
-  var host = '123.58.180.77';
-  //host = 'pomelo5.server.163.org';
-  //host = 'fkmm8.photo.163.org';
-  //host = "192.168.144.199";
-  //host = '127.0.0.1';
+	var host = 'web.push.126.net';
+  // var host = '123.58.180.77';
+  // host = 'pomelo5.server.163.org';
+  // host = 'fkmm8.photo.163.org';
+  // host = "192.168.144.199";
+  // host = '127.0.0.1';
   var port = 6003;
   //port = 3031;
   var uid = typeof actor!='undefined'?actor.id:-33;
