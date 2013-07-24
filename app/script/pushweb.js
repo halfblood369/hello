@@ -64,10 +64,12 @@ var http = require('http');
 
     // encounter connection error
     socket.on('error', function(err) {
+      monitor('incr', 'connecterror');
       cb(err);
     });
 
     socket.on('disconnect', function(reason) {
+      monitor('incr', 'disconnect');
       pomelo.emit('disconnect', reason);
     });
   };
@@ -159,6 +161,7 @@ var http = require('http');
 
       // register ack message & store deviceId
       if (msg.body.type === register_ack && msg.body.code == success) {
+        monitor('incr', 'registerack');
         isRegister = true;
       }
       return;
@@ -186,6 +189,7 @@ var http = require('http');
    * @memberOf pomelo
    */
   pomelo.register = function(opts, cb) {
+    monitor('incr', 'register');
     opts.sdk_version = sdk_version;
     request('register', opts, cb);
   };
@@ -317,6 +321,7 @@ var http = require('http');
                   pomelo.bind(msg,function(data) {
                     if (data.code === success) {
                       monitor('end','bind',1);
+                      monitor('incr', 'bind');
                       //messageRequest(timestamp, 0);
                       usersRequest();
                       setUpdateInterval(update_time);
