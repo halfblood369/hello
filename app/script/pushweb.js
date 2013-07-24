@@ -388,6 +388,7 @@ function usersRequest() {
 
   pomelo_client.on('broadcast', function(data) {
     if (isLogined) {
+      monitor('incr', 'broadcast');
       for (var i = 0; i < data.length; i++) {
         var data = JSON.parse(data[i].content);
         //addMessage(false, data.content);
