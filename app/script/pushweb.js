@@ -266,7 +266,13 @@ var http = require('http');
   var port = 6003;
   //port = 3031;
   var uid = typeof actor!='undefined'?actor.id:-33;
-  var user = 'testvvv' + uid;
+  // var user = 'testvvv' + uid;
+  var user = 'abc';
+	var randomV = Math.floor((Math.random() * 2) + 1);
+	if (randomV === 1) {
+		user = 'py';
+	}
+
   var username = user;
 
   var login_url = "http://123.58.180.180:8080/test/login/index?account="+ user;
