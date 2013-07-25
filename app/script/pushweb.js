@@ -380,6 +380,7 @@ function usersRequest() {
 };
 
   pomelo_client.on('specify', function(data) {
+    monitor('incr', 'privateletter');
     //messageRequest(timestamp, data.timestamp);
     timestamp = data.timestamp;
     console.log(data)
