@@ -2,11 +2,8 @@ var mqtt = require('mqttjs');
 var events = ['connack', 'puback', 'publish', 'pubcomp', 'suback'];
 
 var port = 6002;
-// var port = 3011;
-// var host = '123.58.180.77';
-var host = 'android.push.126.net';
-// var host = '114.113.202.163';
-// var host = '123.58.180.26';
+// var host = 'android.push.126.net';
+var host = '123.58.180.26';
 
 var id = typeof actor!='undefined'?actor.id:-2;
 var deviceId = 'android_' + id;
@@ -42,7 +39,7 @@ var monitor = function(type,name,reqId){
   }
 }
 
-var updateTimestamp = function(message) {
+var updateTimestamp = function(message, actObj) {
   if(!message.topic) {
     return;
   }
@@ -51,6 +48,9 @@ var updateTimestamp = function(message) {
   var payload = JSON.parse(message.payload);
   switch(type) {
     case 'broadcast':
+			if (!!actObj) {
+				actObj.broadcastAck(payload);
+			}
     case 'specify':
       var length = payload.length;
       monitor('incr',type);
@@ -97,7 +97,7 @@ var connect = function (port,host) {
         //if (isDebug()){
           //console.log(packet);
         //}
-        updateTimestamp(packet);
+        updateTimestamp(packet, act);
         if (!!act[packet.cmd]) {
           act[packet.cmd].apply(act,[packet]);
         }
@@ -142,13 +142,10 @@ Action.prototype.publish = function(packet){
   var topic = packet.topic;
   var name = topic.substring(topic.indexOf('/')+1,topic.length);
   if (typeof this[name]==='undefined'){
-      //console.error('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~',packet);
-      return;
+		return;
   }
   this[name](JSON.parse(packet.payload));
 }
-
-
 
 Action.prototype.pubcomp = function(packet){
 
@@ -173,6 +170,18 @@ Action.prototype.ack = function(ids){
   this.send(topic,1,payload);
 }
 
+Action.prototype.broadcastAck = function(payload){
+  var msgs = payload;
+  var ids = [];
+  for (var i = 0; i < msgs.length; i++){
+      var msg = msgs[i];
+      ids.push(msg.msgId);
+  }
+
+  var topic = domain + '/broadcastAck';
+  var newPayload = {"user":user, "msgIds":ids};
+  this.send(topic, 1, newPayload);
+}
  
 Action.prototype.register = function() {
   isFirst = false;
