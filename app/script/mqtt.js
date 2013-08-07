@@ -79,7 +79,7 @@ var connect = function (port,host) {
       console.log(err);
       console.timeEnd('reset');
       monitor('incr','connerror');
-      lastTimeOut += Math.round(Math.random()*10000);
+      lastTimeOut += Math.round(Math.random()*10000*60);
       setTimeout(function(){
         if (retry<=100000) {
           connect(port,host);
