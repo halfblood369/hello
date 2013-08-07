@@ -1,9 +1,11 @@
 var mqtt = require('mqttjs');
 var events = ['connack', 'puback', 'publish', 'pubcomp', 'suback'];
 
-var port = 6002;
+// var port = 6002;
+var port = 3011;
 // var host = 'android.push.126.net';
-var host = '123.58.180.26';
+// var host = '123.58.180.26';
+var host = '123.58.180.233';
 
 var id = typeof actor!='undefined'?actor.id:-2;
 var deviceId = 'android_' + id;
