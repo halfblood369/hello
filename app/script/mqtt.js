@@ -196,7 +196,7 @@ Action.prototype.broadcastAck = function(payload){
 Action.prototype.register = function() {
   isFirst = false;
   var topic = domain + '/register';
-  var payload = {"platform":platform,'deviceId':deviceId,"domain":domain,"productKey":productKey};
+  var payload = {"platform":platform,'deviceId':deviceId,"domain":domain,"productKey":productKey,"productVersion":"0.1.1"};
   monitor(START,'register',REGISTER);
   monitor('incr','register');
   this.send(topic,1,payload);
