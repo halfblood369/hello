@@ -42,7 +42,7 @@ var randomV = Math.floor((Math.random() * nameList.length));
 user = nameList[randomV];
 
 var verPrefix = '0.1.';
-var randomN = Math.floor((Math.random() * 10) + 1);
+var randomN = Math.floor((Math.random() * 20) + 1);
 var productVersion = verPrefix + randomN;
 // console.log('productVersion = ', productVersion);
 
