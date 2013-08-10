@@ -41,6 +41,11 @@ var user = nameList[0];
 var randomV = Math.floor((Math.random() * nameList.length));
 user = nameList[randomV];
 
+var verPrefix = '0.1.';
+var randomN = Math.floor((Math.random() * 10) + 1);
+var productVersion = verPrefix + randomN;
+// console.log('productVersion = ', productVersion);
+
 var monitor = function(type,name,reqId){
   if (typeof actor!='undefined') {
     actor.emit(type,name,reqId);
@@ -199,7 +204,7 @@ Action.prototype.broadcastAck = function(payload){
 Action.prototype.register = function() {
   isFirst = false;
   var topic = domain + '/register';
-  var payload = {"platform":platform,'deviceId':deviceId,"domain":domain,"productKey":productKey,"productVersion":"0.1.1"};
+  var payload = {"platform":platform,'deviceId':deviceId,"domain":domain,"productKey":productKey,"productVersion":productVersion};
   monitor(START,'register',REGISTER);
   monitor('incr','register');
   this.send(topic,1,payload);
