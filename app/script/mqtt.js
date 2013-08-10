@@ -16,7 +16,9 @@ var interval = 20000;
 var domain = 'blog.163.com';
 var productKey = "94b4b71691a3ee3da605ed4f02696691";
 var platform = "android";
-var expire_time = "1373965044790";
+// var expire_time = "1373965044790";
+var expire_time = Date.now() + 24*60*60;
+
 var nonce = "faLvUuMzPgQAUFwK";
 var signature = "8wmHp9eYhMACfIf3J0PJdgVEcFU=";
 
@@ -61,6 +63,7 @@ var updateTimestamp = function(message, actObj) {
 				actObj.broadcastAck(payload);
 			}
       */
+      break;
     case 'specify':
       var length = payload.length;
       monitor('incr', type);
@@ -223,7 +226,7 @@ Action.prototype.regbind = function(){
   var self = this;
   var topic = domain + '/reg_bind';
   monitor(START,'regbind',REGBIND);
-  var payload = {"platform":platform,"user":user,"timestamp":timestamp ,"expire_time":12,"nonce":nonce,"signature":signature,"productKey":productKey,"deviceId":deviceId,"domain":domain};
+  var payload = {"platform":platform,"user":user,"timestamp":timestamp ,"expire_time":expire_time,"nonce":nonce,"signature":signature,"productKey":productKey,"deviceId":deviceId,"domain":domain};
   self.send(topic,1,payload);
 }
  
@@ -231,7 +234,7 @@ Action.prototype.regbind = function(){
 Action.prototype.bind = function(){
   var topic = domain + '/bind';
   monitor(START,'bind',BIND);
-  var payload = {"platform":platform,"user":user,"expire_time":12,"signature":signature,"productKey":productKey,'deviceId':deviceId,"domain":domain};
+  var payload = {"platform":platform,"user":user,"expire_time":expire_time,"signature":signature,"productKey":productKey,'deviceId':deviceId,"domain":domain};
   this.send(topic,1,payload);
 }
 
