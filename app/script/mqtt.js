@@ -68,7 +68,6 @@ var updateTimestamp = function(message, actObj) {
 				actObj.broadcastAck(payload);
 			}
       */
-      break;
     case 'specify':
       var length = payload.length;
       monitor('incr', type);
