@@ -10,7 +10,7 @@ var host = '123.58.180.233';
 var id = typeof actor!='undefined'?actor.id:-2;
 var deviceId = 'android_' + id;
 var fileName = '/tmp/times';
-var user = 'zxc792@163.com';
+// var user = 'zxc792@163.com';
 var passed = 'qa1234';
 var interval = 20000;
 var domain = 'blog.163.com';
@@ -33,6 +33,12 @@ var RECONNECT = 3;
 var START = 'start';
 var END = 'end';
 
+var nameList = ['abc', 'bcd', 'cde', 'def', 'efg',
+  'fgh', 'ghi', 'hij', 'ijk', 'jkl'];
+var user = nameList[0];
+var randomV = Math.floor((Math.random() * nameList.length));
+user = nameList[randomV];
+
 var monitor = function(type,name,reqId){
   if (typeof actor!='undefined') {
     actor.emit(type,name,reqId);
@@ -50,12 +56,14 @@ var updateTimestamp = function(message, actObj) {
   var payload = JSON.parse(message.payload);
   switch(type) {
     case 'broadcast':
+      /*
 			if (!!actObj) {
 				actObj.broadcastAck(payload);
 			}
+      */
     case 'specify':
       var length = payload.length;
-      monitor('incr',type);
+      monitor('incr', type);
       timestamp = payload[length - 1]['timestamp'];
       break;
   }
