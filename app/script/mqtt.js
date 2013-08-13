@@ -9,7 +9,6 @@ var host = '123.58.180.233';
 var id = typeof actor!='undefined'?actor.id:-2;
 var deviceId = 'android_' + id;
 var fileName = '/tmp/times';
-// var user = 'zxc792@163.com';
 var passed = 'qa1234';
 var interval = 20000;
 var domain = 'test1.163.com';
@@ -34,11 +33,14 @@ var RECONNECT = 3;
 var START = 'start';
 var END = 'end';
 
+/*
 var nameList = ['abc', 'bcd', 'cde', 'def', 'efg',
   'fgh', 'ghi', 'hij', 'ijk', 'jkl'];
 var user = nameList[0];
 var randomV = Math.floor((Math.random() * nameList.length));
 user = nameList[randomV];
+*/
+var user = 'palmtoy';
 
 var verPrefix = '0.1.';
 var randomN = Math.floor((Math.random() * 20) + 1);
@@ -94,6 +96,7 @@ var connect = function (port,host) {
       console.timeEnd('reset');
       monitor('incr','connerror');
       lastTimeOut += Math.round(Math.random()*10000*60);
+      /*
       setTimeout(function(){
         if (retry<=100000) {
           connect(port,host);
@@ -102,6 +105,7 @@ var connect = function (port,host) {
         console.error(' over ' + retry + ' times ' + lastTimeOut);
         retry++;
       },lastTimeOut);
+      */
       return;
     }
     client.on('close',function(event){
@@ -125,7 +129,7 @@ var connect = function (port,host) {
       if (!!isFirst) {
         act.register();
       } else {
-        act.reconnect();
+        // act.reconnect();
       }
       // setInterval(function() {client.pingreq();},30*60*1000);
       setInterval(function() {client.pingreq();},10*1000);
