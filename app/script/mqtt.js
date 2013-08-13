@@ -4,7 +4,6 @@ var events = ['connack', 'puback', 'publish', 'pubcomp', 'suback'];
 // var port = 6002;
 var port = 3011;
 // var host = 'android.push.126.net';
-// var host = '123.58.180.26';
 var host = '123.58.180.233';
 
 var id = typeof actor!='undefined'?actor.id:-2;
@@ -13,14 +12,14 @@ var fileName = '/tmp/times';
 // var user = 'zxc792@163.com';
 var passed = 'qa1234';
 var interval = 20000;
-var domain = 'blog.163.com';
-var productKey = "94b4b71691a3ee3da605ed4f02696691";
+var domain = 'test1.163.com';
+var productKey = "f8b118417b1f47dba662573f440b7016";
 var platform = "android";
-// var expire_time = "1373965044790";
-var expire_time = Date.now() + 24*60*60;
+// var expire_time = Date.now() + 24*60*60*1000;
+var expire_time = 1378973038886;
 
-var nonce = "faLvUuMzPgQAUFwK";
-var signature = "8wmHp9eYhMACfIf3J0PJdgVEcFU=";
+var nonce = "QzT4eGESGw5XefER";
+var signature = "h44EfIiu04XboHy/7ye7JH3X3Fo="
 
 var timestamp = 0;
 var retry = 0;
@@ -174,11 +173,15 @@ Action.prototype.suback = function(packet){
 Action.prototype.specify = function(payload){
   var msgs= payload;
   var ids = [];
-  for (var i = 0;i< msgs.length;i++){
+  for (var i = 0; i < msgs.length; i++){
       var msg = msgs[i];
       ids.push(msg.msgId);
   }
-  this.ack(ids);
+  var tmpStr = '';
+  for (var j = 0; j < ids.length; j++) {
+    tmpStr += ids[j] + ';';
+  }
+  this.ack(tmpStr);
 }
 
 Action.prototype.ack = function(ids){
