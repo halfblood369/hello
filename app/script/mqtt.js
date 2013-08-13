@@ -15,10 +15,10 @@ var domain = 'test1.163.com';
 var productKey = "f8b118417b1f47dba662573f440b7016";
 var platform = "android";
 // var expire_time = Date.now() + 24*60*60*1000;
-var expire_time = 1378973038886;
+var expire_time = 1378976295392;
 
-var nonce = "QzT4eGESGw5XefER";
-var signature = "h44EfIiu04XboHy/7ye7JH3X3Fo="
+var nonce = "K57niwi9I32rajfY";
+var signature = "uZ9fOg+pxQKFZgYQh7dmEkv0atE="
 
 var timestamp = 0;
 var retry = 0;
