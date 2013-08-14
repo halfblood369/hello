@@ -95,17 +95,15 @@ var connect = function (port,host) {
       console.log(err);
       console.timeEnd('reset');
       monitor('incr','connerror');
-      lastTimeOut += Math.round(Math.random()*10000*60);
-      /*
+      lastTimeOut += Math.floor(Math.random() * 5 * 60 * 1000) + 5*60*1000;
       setTimeout(function(){
-        if (retry<=100000) {
+        if (retry <= 100) {
           connect(port,host);
         }
-        monitor('incr','reconnect'); 
-        console.error(' over ' + retry + ' times ' + lastTimeOut);
+        monitor('incr', 'reconnect'); 
+        console.error('over ' + retry + ' times ' + lastTimeOut);
         retry++;
-      },lastTimeOut);
-      */
+      }, lastTimeOut);
       return;
     }
     client.on('close',function(event){
