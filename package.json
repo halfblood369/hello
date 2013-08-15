@@ -2,7 +2,7 @@
     "name": "robot-client",
     "version": "0.0.1",
     "description": "A distributed load test framework",
-    "author": "<palmtoy@gmail.com>",
+    "author": "<zgli@gmail.com>",
 		"dependencies": {
 			"socket.io-client": "0.9.15"
 			,"socket.io": "0.9.15"
