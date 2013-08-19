@@ -1,10 +1,18 @@
 var mqtt = require('mqttjs');
 var events = ['connack', 'puback', 'publish', 'pubcomp', 'suback'];
 
-// var port = 6002;
-var port = 3011;
-// var host = 'android.push.126.net';
-var host = '123.58.180.233';
+var port = 6002;
+// var port = 3011;
+var host = 'android.push.126.net';
+// var host = '123.58.180.233';
+
+/*
+nonce=EOatpqtMCTwTKMJX
+&
+expire_time=1379508381190
+&
+signature=KRYY6yLEY5/i98VnkLTWbGEFwJI=
+*/
 
 var id = typeof actor!='undefined'?actor.id:-2;
 var deviceId = 'android_' + id;
@@ -15,10 +23,10 @@ var domain = 'test1.163.com';
 var productKey = "f8b118417b1f47dba662573f440b7016";
 var platform = "android";
 // var expire_time = Date.now() + 24*60*60*1000;
-var expire_time = 1378976295392;
+var expire_time = 1379508381190;
 
-var nonce = "K57niwi9I32rajfY";
-var signature = "uZ9fOg+pxQKFZgYQh7dmEkv0atE="
+var nonce = "EOatpqtMCTwTKMJX";
+var signature = "KRYY6yLEY5/i98VnkLTWbGEFwJI="
 
 var timestamp = 0;
 var retry = 0;
@@ -40,7 +48,7 @@ var user = nameList[0];
 var randomV = Math.floor((Math.random() * nameList.length));
 user = nameList[randomV];
 */
-var user = 'palmtoy';
+var user = 'xyzabc';
 
 var verPrefix = '0.1.';
 var randomN = Math.floor((Math.random() * 20) + 1);
