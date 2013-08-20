@@ -1,17 +1,25 @@
 var mqtt = require('mqttjs');
 var events = ['connack', 'puback', 'publish', 'pubcomp', 'suback'];
 
-var port = 6002;
+// var host = '123.58.180.233';
 // var port = 3011;
 var host = 'android.push.126.net';
-// var host = '123.58.180.233';
+var port = 6002;
 
+var domain = 'test1.163.com';
+var productKey = "6cdb8bab43bd49b18352b31fc6a9c991";
+var platform = "android";
+// var expire_time = Date.now() + 24*60*60*1000;
+var expire_time = "1379249901959";
+var nonce = "zmusFan1XZArygUX";
+var signature = "/eJ/FwuDydiFQ0p+RlR7NXTG5Ak=";
+var user = 'lwj';
 /*
-nonce=EOatpqtMCTwTKMJX
-&
-expire_time=1379508381190
-&
-signature=KRYY6yLEY5/i98VnkLTWbGEFwJI=
+var nameList = ['abc', 'bcd', 'cde', 'def', 'efg',
+  'fgh', 'ghi', 'hij', 'ijk', 'jkl'];
+var user = nameList[0];
+var randomV = Math.floor((Math.random() * nameList.length));
+user = nameList[randomV];
 */
 
 var id = typeof actor!='undefined'?actor.id:-2;
@@ -19,14 +27,6 @@ var deviceId = 'android_' + id;
 var fileName = '/tmp/times';
 var passed = 'qa1234';
 var interval = 20000;
-var domain = 'test1.163.com';
-var productKey = "f8b118417b1f47dba662573f440b7016";
-var platform = "android";
-// var expire_time = Date.now() + 24*60*60*1000;
-var expire_time = 1379508381190;
-
-var nonce = "EOatpqtMCTwTKMJX";
-var signature = "KRYY6yLEY5/i98VnkLTWbGEFwJI="
 
 var timestamp = 0;
 var retry = 0;
@@ -40,15 +40,6 @@ var RECONNECT = 3;
 
 var START = 'start';
 var END = 'end';
-
-/*
-var nameList = ['abc', 'bcd', 'cde', 'def', 'efg',
-  'fgh', 'ghi', 'hij', 'ijk', 'jkl'];
-var user = nameList[0];
-var randomV = Math.floor((Math.random() * nameList.length));
-user = nameList[randomV];
-*/
-var user = 'xyzabc';
 
 var verPrefix = '0.1.';
 var randomN = Math.floor((Math.random() * 20) + 1);
