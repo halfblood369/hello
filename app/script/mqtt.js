@@ -3,6 +3,8 @@ var events = ['connack', 'puback', 'publish', 'pubcomp', 'suback'];
 
 // var host = '123.58.180.233';
 // var port = 3011;
+var host = '123.58.180.26';
+var port = 6001;
 
 var domain = 'test1.163.com';
 var productKey = "6cdb8bab43bd49b18352b31fc6a9c991";
@@ -11,14 +13,12 @@ var platform = "android";
 var expire_time = "1379249901959";
 var nonce = "zmusFan1XZArygUX";
 var signature = "/eJ/FwuDydiFQ0p+RlR7NXTG5Ak=";
-var user = 'lwj';
-/*
+// var user = 'lwj';
 var nameList = ['abc', 'bcd', 'cde', 'def', 'efg',
   'fgh', 'ghi', 'hij', 'ijk', 'jkl'];
 var user = nameList[0];
 var randomV = Math.floor((Math.random() * nameList.length));
 user = nameList[randomV];
-*/
 
 var id = typeof actor!='undefined'?actor.id:-2;
 var deviceId = 'android_' + id;
