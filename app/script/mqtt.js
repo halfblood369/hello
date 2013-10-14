@@ -3,7 +3,7 @@ var events = ['connack', 'puback', 'publish', 'pubcomp', 'suback'];
 
 // var host = '123.58.180.233';
 // var port = 3011;
-var host = '123.58.180.233';
+var host = '123.58.180.26';
 var port = 6002;
 
 var domain = 'test1.163.com';
