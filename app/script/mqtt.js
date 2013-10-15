@@ -41,8 +41,11 @@ var END = 'end';
 
 var verPrefix = '0.1.';
 var randomN = Math.floor((Math.random() * 20) + 1);
-var productVersion = '0.2.2';
+//var productVersion = '0.2.2';
 // console.log('productVersion = ', productVersion);
+var verPrefix = '0.1.';
+var randomN = Math.floor((Math.random() * 20) + 1);
+var productVersion = verPrefix + randomN;
 
 var monitor = function(type,name,reqId){
   if (typeof actor!='undefined') {
