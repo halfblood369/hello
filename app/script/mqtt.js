@@ -216,7 +216,7 @@ Action.prototype.registerack = function(payload){
   monitor(END,'register',REGISTER);
   monitor('incr','registerack');
   if (payload.code===200) {
-    this.regbind();
+    //this.regbind();
   } else {
     monitor('incr','incr ' + payload.code);
   }
