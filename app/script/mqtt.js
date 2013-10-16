@@ -130,7 +130,7 @@ var connect = function (port,host) {
         act.reconnect();
       }
       // setInterval(function() {client.pingreq();},30*60*1000);
-      setInterval(function() {client.pingreq();},10*1000);
+      setInterval(function() {client.pingreq();},60*1000);
     });
   });
 };
