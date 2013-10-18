@@ -4,7 +4,7 @@ var events = ['connack', 'puback', 'publish', 'pubcomp', 'suback'];
 // var host = '123.58.180.233';
 // var port = 3011;
 var host = '123.58.180.26';
-var port = 6002;
+var port = 6001;
 
 var domain = 'test2.163.com';
 var productKey = "6cdb8bab43bd49b18352b31fc6a9c991";
