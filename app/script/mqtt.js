@@ -107,8 +107,11 @@ var connect = function (port,host) {
       return;
     }
     client.on('close',function(event){
-      connect(port,host);
+			act.reconnect();	
     })
+		client.on('error', function() {
+			act.reconnect();	
+		});
     for (var i = 0; i < events.length; i++) {
       client.on(events[i], function(packet) {
         if (!packet) return;
@@ -127,7 +130,7 @@ var connect = function (port,host) {
       if (!!isFirst) {
         act.register();
       } else {
-        act.reconnect();
+        //act.reconnect();
       }
       // setInterval(function() {client.pingreq();},30*60*1000);
       setInterval(function() {client.pingreq();},60*1000);
