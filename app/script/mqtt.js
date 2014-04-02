@@ -107,10 +107,14 @@ var connect = function (port,host) {
       return;
     }
     client.on('close',function(event){
-			act.reconnect();	
+			setTimeout(function() {
+				act.reconnect();	
+			}, 60 * 1000)
     })
 		client.on('error', function() {
-			act.reconnect();	
+			setTimeout(function() {
+				act.reconnect();	
+			}, 60 * 1000)
 		});
     for (var i = 0; i < events.length; i++) {
       client.on(events[i], function(packet) {
