@@ -98,7 +98,7 @@ var connect = function (port,host) {
       lastTimeOut += Math.floor(Math.random() * 2 * 60 * 1000);
 			lastTimeOut = 1 * 60 * 1000;
       setTimeout(function(){
-        if (retry <= 100) {
+        if (retry <= 5) {
           connect(port,host);
         }
         monitor('incr', 'reconnect'); 
