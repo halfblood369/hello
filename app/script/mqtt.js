@@ -92,10 +92,10 @@ var connect = function (port,host) {
   mqtt.createClient(port, host, function(err, client) {
     var act = new Action(client);
     if (err) {
-      console.log(err);
+      console.log(err + '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
       console.timeEnd('reset');
       monitor('incr','connerror');
-      lastTimeOut += Math.floor(Math.random() * 5 * 60 * 1000) + 5*60*1000;
+      lastTimeOut += Math.floor(Math.random() * 2 * 60 * 1000);
       setTimeout(function(){
         if (retry <= 100) {
           connect(port,host);
@@ -107,17 +107,11 @@ var connect = function (port,host) {
       return;
     }
     client.on('close',function(event){
+			return connect(port, host);	
 			console.log('close~~~~~~~~~~~~~~~~~~~~~~', new Date());
 			setTimeout(function() {
-				act.reconnect();	
 			}, 60 * 1000)
     })
-		client.on('error', function() {
-			console.log('error~~~~~~~~~~~~~~~~~~~~~~', new Date());
-			setTimeout(function() {
-				act.reconnect();	
-			}, 60 * 1000)
-		});
     for (var i = 0; i < events.length; i++) {
       client.on(events[i], function(packet) {
         if (!packet) return;
@@ -136,7 +130,7 @@ var connect = function (port,host) {
       if (!!isFirst) {
         act.register();
       } else {
-        //act.reconnect();
+        act.reconnect();
       }
       // setInterval(function() {client.pingreq();},30*60*1000);
       //setInterval(function() {client.pingreq();},60*1000);
@@ -263,6 +257,7 @@ Action.prototype.unbind = function(){
 }
  
 Action.prototype.reconnect = function(){
+	console.log('reconnect ~~~~~~~~~~~~~~~~~~~~~~~');
   var self = this;
   var topic = domain + '/reconnect';
   monitor(START,'reconnect',RECONNECT);
