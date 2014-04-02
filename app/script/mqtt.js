@@ -107,11 +107,13 @@ var connect = function (port,host) {
       return;
     }
     client.on('close',function(event){
+			console.log('close~~~~~~~~~~~~~~~~~~~~~~', new Date());
 			setTimeout(function() {
 				act.reconnect();	
 			}, 60 * 1000)
     })
 		client.on('error', function() {
+			console.log('error~~~~~~~~~~~~~~~~~~~~~~', new Date());
 			setTimeout(function() {
 				act.reconnect();	
 			}, 60 * 1000)
@@ -137,7 +139,7 @@ var connect = function (port,host) {
         //act.reconnect();
       }
       // setInterval(function() {client.pingreq();},30*60*1000);
-      setInterval(function() {client.pingreq();},60*1000);
+      //setInterval(function() {client.pingreq();},60*1000);
     });
   });
 };
